@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yükle Detayla — PDF'ini yükle, özetini oku, testlerle çalış</title>
+<meta name="description" content="PDF'ini yükle; özetini, 20 soruluk testlerini ve günün sorusunu hazırlayan çalışma uygulaması.">
+<meta property="og:title" content="Yükle Detayla">
+<meta property="og:description" content="PDF'ini yükle, özetini oku, testlerle pekiştir.">
+<style>
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f1ea;color:#1f2430;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;box-sizing:border-box}
+  .box{max-width:420px;width:100%;text-align:center}
+  .logo{width:96px;height:96px;border-radius:26px;background:#2f5d50;display:grid;place-items:center;margin:0 auto 14px;font-size:50px}
+  h1{margin:0 0 6px;font-size:2rem}
+  p{color:#6b7080;margin:0 0 22px}
+  a.store{display:flex;align-items:center;justify-content:center;gap:10px;background:#111;color:#fff;text-decoration:none;border-radius:14px;padding:14px;margin-bottom:10px;font-weight:700;font-size:1.05rem}
+  a.store.off{opacity:.45;pointer-events:none}
+  small{color:#6b7080}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo">📚</div>
+  <h1>Yükle Detayla</h1>
+  <p>PDF'ini yükle, özetini oku, testlerle pekiştir.</p>
+  <a class="store" id="play" href="https://play.google.com/store/apps/details?id=com.mobihome.yukledetayla">▶ Google Play'den indir</a>
+  <a class="store off" id="ios" href="#">  App Store (yakında)</a>
+  <small id="note"></small>
+</div>
+<script>
+  // Mağaza bağlantıları: App Store kimliği gelince APPSTORE doldurulacak
+  var PLAY = "https://play.google.com/store/apps/details?id=com.mobihome.yukledetayla";
+  var APPSTORE = "";
+  var PLAY_LIVE = false; // Play Store'da yayınlanınca true yapılacak
+  if (!PLAY_LIVE) { var pl = document.getElementById('play'); pl.classList.add('off'); pl.textContent = '▶ Google Play (yakında)'; }
+  if (APPSTORE) { var i = document.getElementById('ios'); i.href = APPSTORE; i.classList.remove('off'); i.textContent = '  App Store\'dan indir'; }
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  if (isAndroid && PLAY_LIVE) location.replace(PLAY);
+  else if (isIOS && APPSTORE) location.replace(APPSTORE);
+</script>
+</body>
+</html>
